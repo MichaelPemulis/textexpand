@@ -1,0 +1,73 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+  "name": "Text Blaze",
+  "description": "Create smart text expansions to get more done and streamline your work. Over 100,000,000 keystrokes saved!",
+  "version": "1.6.7",
+  "manifest_version": 2,
+  "permissions": [
+    "tabs",
+    "storage",
+    "unlimitedStorage",
+    "gcm",
+    "notifications",
+    "clipboardRead",
+    "clipboardWrite",
+    "contextMenus",
+    "<all_urls>"
+  ],
+  "icons": {
+    "16": "images/icon_16.png",
+    "32": "images/icon_32.png",
+    "48": "images/icon_48.png",
+    "64": "images/icon_64.png",
+    "96": "images/icon_96.png",
+    "128": "images/icon_128.png"
+  },
+  "background": {
+    "page": "html/background.html",
+    "persistent": true
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "images/icon_16.png",
+      "32": "images/icon_32.png",
+      "48": "images/icon_48.png",
+      "64": "images/icon_64.png",
+      "96": "images/icon_96.png",
+      "128": "images/icon_128.png"
+    },
+    "default_title": "Text Blaze"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "js/contentScript.js"
+      ],
+      "match_about_blank": true,
+      "all_frames": true,
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    "images/*",
+    "sounds/*",
+    "html/*",
+    "js/*",
+    "images/*"
+  ],
+  "offline_enabled": true,
+  "homepage_url": "http://localhost:3030",
+  "externally_connectable": {
+    "matches": [
+      "https://*.blaze.today/*",
+      "http://localhost:3030/*",
+      "https://blaze.today/*"
+    ]
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkQOuCJ85+1t/o4/lGxd280D0zm5QzzRPbD/JbQA/PSg3PlunrlhzgT6afC79nLZ4mGGlhFT/xxC8xELw4ubYofFEtnbBHf6F6bd+vFgzN4mVxBGIsZr4t5whWcdnY+WgsXh5Xvuz14ou8TCbuEYNPOkJFxrrb/LlzHRXrVFWWsHipkz4/f9pG1TFYbecLrQBsK4wqVuENtTvXOY1q+7SVqZK007LHCg3naWU0fHR6cN2XFhL2+Ba7eCPN+HhSdBJCKEW7bQaH0dI6wyK0mHAXkgCn8K36mEXT/OduiWwW/UIbbEQKuhu5seG99YJYZ1pNUcMpbGg09+VroaKCDiZAwIDAQAB",
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://apis.google.com/ https://www.gstatic.com/ https://cdn.firebase.com https://*.firebaseio.com https://www.googleapis.com; object-src 'self'"
+}
